@@ -5,7 +5,8 @@ namespace AoC2021
     {
         static void Main(string[] args)
         {
-            new Advent1().Run();
+            //new Advent1().Run();
+            new Advent2().Run();
         }
     }
 }
