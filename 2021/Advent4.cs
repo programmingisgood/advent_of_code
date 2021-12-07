@@ -151,6 +151,8 @@ namespace AoC2021
 
             /////////////////////////////////////////////////////////////////
 
+            Console.WriteLine("Running Avent 4, Part 2");
+            
             winningScore = 0;
 
             // Draw numbers and mark boards.
@@ -172,8 +174,6 @@ namespace AoC2021
             }
 
             Console.WriteLine("Winning last board score: " + winningScore);
-
-            Console.WriteLine("Running Avent 4, Part 2");
         }
 
         private void Parse(List<int> draws, List<Board> boards)

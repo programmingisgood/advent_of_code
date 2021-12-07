@@ -4,8 +4,9 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>_2021</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>
   </PropertyGroup>
 
 </Project>
