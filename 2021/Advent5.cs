@@ -6,7 +6,7 @@ namespace AoC2021
 {
     class Advent5
     {
-        private struct Coord// : System.IEquatable<Coord>
+        private struct Coord
         {
             public int x;
             public int y;
@@ -16,50 +16,6 @@ namespace AoC2021
                 x = setX;
                 y = setY;
             }
-
-            /*public bool Equals(Coord other)
-            {
-                return x.Equals(other.x) && y.Equals(other.y);
-            }
-
-            public override bool Equals(Object other)
-            {
-                if (other is Coord)
-                {
-                    // Convert object to Vector3
-                    Coord otherVector = (Coord) other;
-
-                    // Check for equality
-                    return otherVector.Equals(this);
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
-            public static bool operator ==(Coord coord1, Coord coord2)
-            {
-                if ((object)coord1 == null || ((object)coord2) == null)
-                {
-                    return System.Object.Equals(coord1, coord2);
-                }
-
-                return coord1.Equals(coord2);
-            }
-
-            public static bool operator !=(Coord coord1, Coord coord2)
-            {
-                return !(coord1 == coord2);
-            }
-
-            public override int GetHashCode()
-            {
-                var hashCode = this.x.GetHashCode();
-                hashCode = (hashCode * 397) ^ this.x.GetHashCode();
-                hashCode = (hashCode * 397) ^ this.y.GetHashCode();
-                return hashCode;
-            }*/
         }
 
         private class Line
