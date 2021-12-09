@@ -9,7 +9,6 @@ namespace AoC2021
         {
             Console.WriteLine("Running Advent 7, Part 1");
 
-            // This is a mapping of days remaining and number of fish.
             List<int> positions = new List<int>();
             Parse(positions, out int smallestDist, out int largestDist);
 
