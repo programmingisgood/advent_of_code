@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace AoC2021
 {
@@ -18,7 +17,7 @@ namespace AoC2021
 
             /////////////////////////////////////////////////////////////////
 
-            Console.WriteLine("Running Avent 5, Part 2");
+            Console.WriteLine("Running Avent 6, Part 2");
 
             fish.Clear();
             Parse(fish);
