@@ -15,6 +15,7 @@ namespace AoC2021
 
             int prevBestFuelCost = Int32.MaxValue;
             int checkDist = smallestDist + ((largestDist - smallestDist) / 2);
+            // Note: This method isn't working yet.
             int bestFuelCost = FindBestFuelCost(positions, prevBestFuelCost, checkDist, -1, smallestDist, largestDist);
 
             Console.WriteLine("Best fuel cost: " + bestFuelCost);
@@ -34,6 +35,18 @@ namespace AoC2021
             /////////////////////////////////////////////////////////////////
 
             Console.WriteLine("Running Avent 7, Part 2");
+
+            bestFuelCost = Int32.MaxValue;
+            for (int d = smallestDist; d <= largestDist; d++)
+            {
+                int fuelCost = CalcFuelCost2(positions, d);
+                if (fuelCost < bestFuelCost)
+                {
+                    bestFuelCost = fuelCost;
+                }
+            }
+
+            Console.WriteLine("Best fuel cost (brute force): " + bestFuelCost);
         }
 
         private int CalcFuelCost(List<int> positions, int atDist)
@@ -42,6 +55,19 @@ namespace AoC2021
             for (int i = 0; i < positions.Count; i++)
             {
                 fuelCost += Math.Abs(atDist - positions[i]);
+            }
+
+            return fuelCost;
+        }
+
+        private int CalcFuelCost2(List<int> positions, int atDist)
+        {
+            int fuelCost = 0;
+            for (int i = 0; i < positions.Count; i++)
+            {
+                int position = positions[i];
+                int cost = Math.Abs(position - atDist);
+                fuelCost += ((cost * cost) + cost) / 2;
             }
 
             return fuelCost;
