@@ -12,7 +12,8 @@ namespace AoC2021
             //new Advent5().Run();
             //new Advent6().Run();
             //new Advent7().Run();
-            new Advent8().Run();
+            //new Advent8().Run();
+            new Advent9().Run();
         }
     }
 }

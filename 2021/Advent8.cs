@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 // NOTE: I am not happy with my solution to part 2. I went down a bit of a rabbit hole of
 // "I'll just brute force a quick solution and then refactor" but the brute force method
