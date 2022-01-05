@@ -7,17 +7,17 @@ namespace AoC2021
     {
         private class HeightMap
         {
-            private int width = 0;
-            private int height = 0;
+            public int Width { get; private set; } = 0;
+            public int Depth { get; private set; } = 0;
 
             private int[,] heights = new int[0, 0];
 
-            public HeightMap(int setWidth, int setHeight)
+            public HeightMap(int setWidth, int setDepth)
             {
-                width = setWidth;
-                height = setHeight;
+                Width = setWidth;
+                Depth = setDepth;
 
-                heights = new int[width, height];
+                heights = new int[Width, Depth];
             }
 
             public void SetHeight(int x, int y, int setHeight)
@@ -32,9 +32,9 @@ namespace AoC2021
 
             public void FindLowPoints(List<int> lowPoints)
             {
-                for (int x = 0; x < width; x++)
+                for (int x = 0; x < Width; x++)
                 {
-                    for (int y = 0; y < height; y++)
+                    for (int y = 0; y < Depth; y++)
                     {
                         int lowestNeighbor = FindLowestNeighbor(x, y);
                         if (heights[x, y] < lowestNeighbor)
@@ -55,7 +55,7 @@ namespace AoC2021
                     neighborHeights[0] = heights[x - 1, y];
                 }
                 // Right
-                if (x + 1 < width)
+                if (x + 1 < Width)
                 {
                     neighborHeights[1] = heights[x + 1, y];
                 }
@@ -66,7 +66,7 @@ namespace AoC2021
                     neighborHeights[2] = heights[x, y - 1];
                 }
                 // Bottom
-                if (y + 1 < height)
+                if (y + 1 < Depth)
                 {
                     neighborHeights[3] = heights[x, y + 1];
                 }
@@ -74,6 +74,13 @@ namespace AoC2021
                 Array.Sort(neighborHeights);
                 return neighborHeights[0];
             }
+        }
+
+        private class Basin
+        {
+            private HashSet<int> indicesInBasin = new HashSet<int>();
+
+            public bool Contains(int )
         }
 
         public void Run()
@@ -92,6 +99,9 @@ namespace AoC2021
 
             Console.WriteLine("Running Avent 9, Part 2");
 
+            List<Basin> basins = new List<Basin>();
+            FindBasins(heightMap, basins);
+
             //Console.WriteLine("Output values sum: " + outputValueSum);
         }
 
@@ -104,6 +114,39 @@ namespace AoC2021
             }
 
             return riskLevelSum;
+        }
+
+        private void FindBasins(HeightMap heightMap, List<Basin> basins)
+        {
+            // Go through each index in the height map and check if it is
+            // a part of a basin.
+            for (int x = 0; x < heightMap.Width; x++)
+            {
+                for (int y = 0; y < heightMap.Depth; y++)
+                {
+                    AddToBasins(heightMap, x, y, basins);
+                }
+            }
+        }
+
+        private void AddToBasins(HeightMap heightMap, int x, int y, List<Basin> basins)
+        {
+            if (heightMap.GetHeight(x, y) < 9)
+            {
+                // Check if this position is already in a basin.
+                foreach (Basin basin in basins)
+                {
+                    if (basin.Contains(x, y))
+                    {
+                        return;
+                    }
+                }
+
+                // This is a new basin.
+                Basin newBasin = new Basin();
+                newBasin.Add(x, y);
+                basins.Add(newBasin);
+            }
         }
 
         private void Parse(HeightMap heightMap)
